@@ -1,0 +1,16 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+{{ post.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">{{ post.title }}</h4>
+  <hr>
+  <p>{{ post.body }}</p>
+  <hr>
+</div>
+
+{% endblock %}

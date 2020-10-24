@@ -1,0 +1,13 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+News Blog
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Новости</h2>
+{% for post in page_object.object_list %}
+    {% include 'blog/includes/post_card_template.html' %}
+{% endfor %}
+
+{% endblock %}
