@@ -6,5 +6,6 @@ from .views import redirect_blog
 urlpatterns = [
     path('', redirect_blog),
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls'), name='home')
+    path('blog/', include('blog.urls'), name='home'),
+    path('weather/', include('weather.urls'), name='weather')
 ]
