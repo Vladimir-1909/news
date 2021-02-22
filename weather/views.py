@@ -5,7 +5,7 @@ from .forms import CityForm
 from django.views.generic import DeleteView
 
 
-def weather_func(request):
+def weather(request):
     appid = 'ce22b38389e2471e1e60f34faf3f1bac'
     url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + appid
 
@@ -36,11 +36,7 @@ def weather_func(request):
         'news': cities
     }
 
-    return context
-
-
-def weather(request):
-    return render(request, 'weather/weather.html', weather_func(request))
+    return render(request, 'weather/weather.html', context)
 
 
 class CityDeleteView(DeleteView):
