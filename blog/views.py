@@ -10,7 +10,7 @@ from .utils import *
 from .forms import TagForm, PostForm
 from weather.models import City
 from weather.forms import CityForm
-from weather.views import weather
+from weather.views import weather_func
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
@@ -42,40 +42,13 @@ def posts_list(request):
         next_url = '?page={}'.format(page.next_page_number())
     else:
         next_url = ''
-    # weather
-    appid = 'ce22b38389e2471e1e60f34faf3f1bac'
-    url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + appid
-
-    if (request.method == 'POST'):
-        form = CityForm(request.POST)
-        form.save()
-
-    form = CityForm()
-
-    cities = City.objects.order_by('-id')
-
-    all_cities = []
-
-    for city in cities:
-        res = requests.get(url.format(city.name)).json()
-        city_info = {
-            'id': city.id,
-            'city': city.name,
-            'temp': int(res["main"]["temp"]),
-            'icon': res["weather"][0]["icon"]
-        }
-
-        all_cities.append(city_info)
-
 
     context = {
         'page_object': page,
         'is_paginated': is_paginated,
         'next_url': next_url,
         'prev_url': prev_url,
-        'all_info': all_cities,
-        'form': form,
-        'news': cities
+        'all_info': weather_func(request)
     }
 
     return render(request, 'blog/index.html', context=context)
