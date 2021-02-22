@@ -26,14 +26,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'post_list_url' %}">Posts</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'tags_list_url' %}">Tag</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="{% url 'weather' %}">Weather</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{% url 'post_list_url' %}">
@@ -45,7 +45,7 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-4 offset-md-2">
+            <div class="col-md-6 offset-md-1">
                 {% block content %}
                 no content
                 {% endblock %}
@@ -81,6 +81,13 @@
                 {% endif %}
 
             </div>
+            <div class="col-md-4 offset-md-1">
+                {% block weather %}
+                no weather
+                {% endblock %}
+            </div>
+
+
         </div>
     </div>
 

@@ -1,25 +1,27 @@
-{% extends 'blog/base_blog.html' %}
+{% extends 'weather/base_weather.html' %}
 
 {% block title %}
-News Blog
+   Weather
 {% endblock %}
 
 {% block content %}
-<h2 class="mb-3">Новости</h2>
-{% for post in page_object.object_list %}
-    {% include 'blog/includes/post_card_template.html' %}
-{% endfor %}
-
+      <h1>Введите город</h1>
+      <form action="" method="post">
+      {% csrf_token %}
+      {{ form.name }}
+      <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-danger">
+</form>
 {% endblock %}
 
 {% block weather %}
-          <h2>Информация</h2>
+<h1>Информация</h1>
    {% for info in all_info %}
         <div class="alert alert-info">
             <div class="row">
                 <div class="col-7">
                 <b>Город: </b>{{ info.city }}<br>
                 <b>Температура: </b>{{ info.temp }}<sup>o</sup>
+                <a href="{% url 'delete' info.id %}" class="btn btn-danger">Удалить</a>
                 </div>
             <div class="col-4 offset-1">
                 <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="photo weather">
