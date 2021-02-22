@@ -61,7 +61,7 @@ def posts_list(request):
         city_info = {
             'id': city.id,
             'city': city.name,
-            'temp': res["main"]["temp"],
+            'temp': int(res["main"]["temp"]),
             'icon': res["weather"][0]["icon"]
         }
 
