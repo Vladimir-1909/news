@@ -1,7 +1,7 @@
 {% extends 'blog/base_blog.html' %}
 
 {% block title %}
-    Edit tag "{{ tag.title|title }}" - {{ block.super }}
+    "{{ tag.title|title }}" - {{ block.super }}
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
                 {{ field }}
             </div>
         {% endfor %}
-        <button type="submit" name="button" class="btn btn-primary">Updata Tag</button>
+        <button type="submit" name="button" class="btn btn-primary">Обновить категорию</button>
     </form>
 
 {% endblock %}

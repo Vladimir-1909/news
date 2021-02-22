@@ -5,7 +5,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <p class="card-text">{{ post.body|truncatewords:15 }}</p>
-        <a href="{{ post.get_absolute_url }}" class="btn btn-warning">Read</a>
+        <a href="{{ post.get_absolute_url }}" class="btn btn-warning">Читать</a>
     </div>
     {% if post.tags.all %}
         <div class="card-footer text-muted">
